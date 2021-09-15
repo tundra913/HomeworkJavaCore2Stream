@@ -1,10 +1,18 @@
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         int[] array = new int[]{1, 2, 5, 16, -1, -2, 0, 32, 3, 5, 8, 23, 4};
         int[] resultArray = filter(array);
+        sort(resultArray);
+        print(resultArray);
+    }
 
+    private static void swap(int[] array, int ind1, int ind2) {
+        int tmp = array[ind1];
+        array[ind1] = array[ind2];
+        array[ind2] = tmp;
+    }
+
+    private static void sort(int[] resultArray) {
         boolean needIteration = true;                     //сортировка
         while (needIteration) {
             needIteration = false;
@@ -15,24 +23,15 @@ public class Main {
                 }
             }
         }
-        System.out.println(Arrays.toString(resultArray)); //todo: вывод на экран смогла только c toString,
-                                                          //todo: подскажите как можно сделать без него, если нужно без него.
-    }
-
-    private static void swap(int[] array, int ind1, int ind2) {
-        int tmp = array[ind1];
-        array[ind1] = array[ind2];
-        array[ind2] = tmp;
     }
 
     private static int[] filter(int[] array) {         //фильтрование положительных и четных
         int[] resultArray = new int[5];                //todo: количество ячеек с положительными четными числами мы знаем,
-                                                       //todo:  исходя из того, что данные были предоставленны,
-                                                       //todo: как реализовать это задание без знания количества ячеек,
-                                                       //todo: я совершенно незнаю. Подскажите)
+        //todo:  исходя из того, что данные были предоставленны,
+        //todo: как реализовать это задание без знания количества ячеек,
+        //todo: я совершенно незнаю. Подскажите)
         int j = 0;
-        for (int i = 0, arrayLength = array.length; i < arrayLength; i++) {
-            int k = array[i];
+        for (int k : array) {
             if (k > 0) {
                 if (k % 2 == 0) {
                     resultArray[j] = k;
@@ -41,6 +40,12 @@ public class Main {
             }
         }
         return resultArray;
+    }
+
+    private static void print(int[] array) {        //вывод на экран
+        for (int j : array) {
+            System.out.println(j);
+        }
     }
 
 }
