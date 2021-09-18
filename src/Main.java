@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         int[] array = new int[]{1, 2, 5, 16, -1, -2, 0, 32, 3, 5, 8, 23, 4};
-        int[] resultArray = filter(array);
+        int[] resultArray = filter(array, count(array));
         sort(resultArray);
         print(resultArray);
     }
@@ -25,11 +25,20 @@ public class Main {
         }
     }
 
-    private static int[] filter(int[] array) {         //фильтрование положительных и четных
-        int[] resultArray = new int[5];                //todo: количество ячеек с положительными четными числами мы знаем,
-        //todo:  исходя из того, что данные были предоставленны,
-        //todo: как реализовать это задание без знания количества ячеек,
-        //todo: я совершенно незнаю. Подскажите)
+    private static int count(int[] array) {  //получение количества ячеек нового массива
+        int j = 0;
+        for (int k : array) {
+            if (k > 0) {
+                if (k % 2 == 0) {
+                    j++;
+                }
+            }
+        }
+        return j;
+    }
+
+    private static int[] filter(int[] array, int count) {         //фильтрование положительных и четных, запись в новый массив
+        int[] resultArray = new int[count];
         int j = 0;
         for (int k : array) {
             if (k > 0) {
@@ -49,4 +58,3 @@ public class Main {
     }
 
 }
-
